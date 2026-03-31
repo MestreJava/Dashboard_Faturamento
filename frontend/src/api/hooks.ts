@@ -1,7 +1,7 @@
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 
 import { apiGet, filtersToQuery } from "@/api/client";
-import type { FilterMetadata, Filters, MonthlyVolumeSeries, OverviewKpis, PagedUnifiedRecords } from "@/api/types";
+import type { FilterMetadata, Filters, MonthlyVolumeSeries, OverviewKpis, PagedUnifiedRecords, StatusBySourceSeries } from "@/api/types";
 
 export function useFilterMetadata() {
   return useQuery<FilterMetadata, Error>({
@@ -24,6 +24,14 @@ export function useMonthlyVolume(filters: Filters) {
   return useQuery<MonthlyVolumeSeries, Error>({
     queryKey: ["chart-monthly-volume", Object.fromEntries(qp.entries())],
     queryFn: () => apiGet<MonthlyVolumeSeries>(`/charts/monthly-volume?${qp.toString()}`),
+  });
+}
+
+export function useStatusBySource(filters: Filters) {
+  const qp = filtersToQuery(filters);
+  return useQuery<StatusBySourceSeries, Error>({
+    queryKey: ["chart-status-by-source", Object.fromEntries(qp.entries())],
+    queryFn: () => apiGet<StatusBySourceSeries>(`/charts/status-by-source?${qp.toString()}`),
   });
 }
 

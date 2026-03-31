@@ -45,6 +45,16 @@ class MonthlyVolumeSeries(BaseModel):
   points: list[MonthlyPoint]
 
 
+class StatusBySourcePoint(BaseModel):
+  status: str
+  total: int = Field(ge=0)
+  by_source: dict[str, int]
+
+
+class StatusBySourceSeries(BaseModel):
+  points: list[StatusBySourcePoint]
+
+
 class UnifiedRecord(BaseModel):
   id: str
   date: date

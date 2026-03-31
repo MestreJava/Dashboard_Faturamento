@@ -2,6 +2,7 @@ import ExportButtons from "@/components/ExportButtons";
 import FilterBar from "@/components/FilterBar";
 import KpiCards from "@/components/KpiCards";
 import MonthlyVolumeChart from "@/components/MonthlyVolumeChart";
+import StatusBySourceChart from "@/components/StatusBySourceChart";
 import UnifiedRecordsTable from "@/components/UnifiedRecordsTable";
 import { useFiltersStore } from "@/stores/filtersStore";
 
@@ -30,6 +31,9 @@ export default function Home() {
         <div className="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-3">
           <div className="lg:col-span-2">
             <MonthlyVolumeChart filters={filters} />
+            <div className="mt-4">
+              <StatusBySourceChart filters={filters} />
+            </div>
           </div>
           <div className="lg:col-span-1">
             <ExportButtons filters={filters} />

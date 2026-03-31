@@ -36,6 +36,16 @@ export type MonthlyVolumeSeries = {
   points: MonthlyPoint[];
 };
 
+export type StatusBySourcePoint = {
+  status: string;
+  total: number;
+  by_source: Record<string, number>;
+};
+
+export type StatusBySourceSeries = {
+  points: StatusBySourcePoint[];
+};
+
 export type UnifiedRecord = {
   id: string;
   date: string;
